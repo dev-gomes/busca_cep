@@ -13,6 +13,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 - [Vue.js](https://vuejs.org/)
 - [Axios](https://axios-http.com/)
+- [ViaCEP](https://viacep.com.br/)
 
 ## 🚀 Rodando o projeto
 
