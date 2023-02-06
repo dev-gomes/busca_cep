@@ -1,24 +1,29 @@
-# buscar_cep
+# 📪 Busca CEP
 
-## Project setup
-```
-npm install
-```
+Uma aplicação pra você buscar os endereços referentres a um CEP e nunca mais se perder :)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 🧪 Technologies
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-### Lints and fixes files
-```
-npm run lint
+- [Vue.js](https://vuejs.org/)
+- [Axios](https://axios-http.com/)
+
+## 🚀 Rodando o projeto
+
+Clone este repositório e navegue até a pasta:
+
+```bash
+$ git clone https://github.com/dev-gomes/busca_cep.git
+$ cd busca_cep
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Siga os passos abaixo:
+```bash
+# Instala as dependências
+$ npm install
+
+# Roda ao projeto na sua máquina
+$ npm run serve
+```
+The app will be available for access on your browser at **http://localhost:8080/**
