@@ -2,7 +2,8 @@
     <form>
         <input v-model="cep" placeholder="Qual o CEP para pesquisa de informações?" v-mask="'#####-###'" />
         <button v-on:click="handleGetApiData">
-            <v-icon name="fa-search" fill="#ffffff" />
+            <AppLoading v-if="isLoading" />
+            <v-icon v-if="!isLoading" name="fa-search" fill="#ffffff" />
         </button>
     </form>
     <p v-if="errorMessage"><b>{{ errorMessage }}</b></p>
@@ -24,13 +25,19 @@
 <script>
 import api from '@/services/api.js';
 
+import AppLoading from '@/components/AppLoading.vue';
+
 export default {
     name: 'VueForm',
+    components: {
+        AppLoading
+    },
     data() {
         return {
             cep: '',
             address: '',
-            errorMessage: ''
+            errorMessage: '',
+            isLoading: false
         }
     },
     methods: {
@@ -38,22 +45,20 @@ export default {
             event.preventDefault();
 
             this.cep = this.cep.replace('-', '')
-            console.log(this.cep)
 
             if ((this.cep + '').length === 8) {
                 api.get(`/${this.cep}/json`).then(response => {
-                    console.log(response.data.erro)
+                    this.isLoading = true;
                     if (!response.data.erro) {
-                        console.log('passou')
                         let formatApiResponse = { cep: response.data.cep, cidade: response.data.localidade, bairro: response.data.bairro, rua: response.data.logradouro, complemento: response.data.complemento }
-
+                        
                         this.address = formatApiResponse;
                         this.errorMessage = ''
                     } else {
-                        console.log('caiu no error')
                         this.errorMessage = 'Puts, não conseguimos encontrar nenhum endereço pro CEP informado'
                         this.address = ''
                     }
+                    this.isLoading = false;
                 })
             }
         }
